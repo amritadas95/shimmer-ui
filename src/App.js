@@ -1,24 +1,56 @@
 import logo from './logo.svg';
 import './App.css';
-
+import ShimmerUI from './ShimmerUI';
+import Meme from './Meme';
+import About from './About';
+import Team from './Team';
+import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter} from "react-router-dom"
+import ProtectedRoute from './ProtectedRoute';
+import Login from './login';
+import { useState } from 'react';
 function App() {
+ const app= createBrowserRouter([
+  {
+  path:"/",
+  element:<Meme/>
+
+ },
+ {
+  path:"/about",
+  element:<About/>
+ }
+])
+const [lang,setLang]=useState(null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+     <header style={{backgroundColor:"black",width:"100%",height:50, display:"flex", justifyContent:"space-around"}}>
+     <a href='/'style={{color:"white",marginTop:20,}}>Meme</a>
+     <a href='/about' style={{color:"white",marginTop:20,}}>About</a>
+     <a href='/team' style={{color:"white",marginTop:20,}}>Team</a>
+     <select onChange={(e)=>setLang(e.target.value)}>
+      <option value ="en">English</option>
+      <option value ="od">Odia</option>
+      <option value ="hi">Hindi</option>
+      <option value ="bn">Kanada</option>
+     </select>
+     </header>
+   <div>
+    {console.log('datatesting',lang)}
+     <BrowserRouter>
+     <Routes>
+      <Route path="/" element={<Meme/>}></Route>
+      <Route element={<ProtectedRoute/>}>
+      <Route path="/about" element={<About language={lang}/>}></Route>
+      </Route>
+      
+      <Route path="/team" element={<Team/>}></Route>
+      <Route path="/login" element={<Login/>}></Route>
+      
+     </Routes>
+     </BrowserRouter> 
+     </div>
     </div>
+   
   );
 }
 
