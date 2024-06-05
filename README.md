@@ -4,3 +4,4 @@
 # infinite scroll
 # jest 
  - npx jest --init
+# added Bugfix
