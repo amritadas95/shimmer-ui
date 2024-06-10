@@ -1,7 +1,7 @@
 # shimmer Ui
 # React Router
-# multi languagep
+# multi language
 # infinite scroll
+# Accordian
 # jest 
  - npx jest --init
-# added Bugfix

@@ -14,7 +14,7 @@ const Meme = () => {
     }, [])
     const handleScroll = () => {
         const visibleContent = window.scrollY + window.innerHeight >= document.body.scrollHeight
-        if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
+        if (visibleContent) {
             memeData()
         }
 
