@@ -8,6 +8,7 @@ import { BrowserRouter, Route, RouterProvider, Routes, createBrowserRouter} from
 import ProtectedRoute from './ProtectedRoute';
 import Login from './login';
 import { useState } from 'react';
+import Accordian from "./Accordian"
 function App() {
  const app= createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const [lang,setLang]=useState(null)
      <a href='/'style={{color:"white",marginTop:20,}}>Meme</a>
      <a href='/about' style={{color:"white",marginTop:20,}}>About</a>
      <a href='/team' style={{color:"white",marginTop:20,}}>Team</a>
+     <a href='/accordian' style={{color:"white",marginTop:20,}}>Accordian</a>
      <select onChange={(e)=>setLang(e.target.value)}>
       <option value ="en">English</option>
       <option value ="od">Odia</option>
@@ -44,6 +46,7 @@ const [lang,setLang]=useState(null)
       </Route>
       
       <Route path="/team" element={<Team/>}></Route>
+      <Route path="/accordian" element={<Accordian/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
       
      </Routes>
