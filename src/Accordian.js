@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Accordian =()=>{
-    const [expand,setExpand] =useState({id :0, expanded :false})
+    const [expand,setExpand] =useState(0)
     const accordianData =[
     {
       title :"Accordian item #1",
@@ -18,7 +18,7 @@ const Accordian =()=>{
 ]
 const handleExpandCollapseContent =(event,i,title)=>{
   
-   setExpand({id :i, expanded:!expand.expanded})
+   setExpand(expand ? null :i)
  
 
   
@@ -28,15 +28,15 @@ console.log('exapndd',expand)
     <div>
         
         {accordianData.map((data,i)=>(      
-        <div style={expand.expanded && i == expand.id ?{height:"200px",width:"80%",border:"1px solid black",position:"relative",marginTop:10,marginLeft:10}:{height:42,width:"80%",marginTop:10,marginLeft:10,marginBottom:0,border:"1px solid black"}}key={i}>
+        <div style={expand ===i ?{height:"200px",width:"80%",border:"1px solid black",position:"relative",marginTop:10,marginLeft:10}:{height:42,width:"80%",marginTop:10,marginLeft:10,marginBottom:0,border:"1px solid black"}}key={i}>
      <span style={{display:"flex",justifyContent:"space-between"}}> <span>{data.title}</span>
      <span onClick={(event)=>{handleExpandCollapseContent(event,i,data.title)}}>
-      <img src= {expand.expanded && i == expand.id?
+      <img src= {expand===i?
         "https://icons.veryicon.com/png/o/miscellaneous/simple-and-round-line-mark/up-arrow-50.png":"https://icons.veryicon.com/png/o/miscellaneous/simple-and-round-line-mark/down-arrow-56.png" } style={{height:30,width:30}} key={i}/>
      </span>
      </span>
      <hr/>
-     {expand.expanded && i == expand.id &&
+     {expand ===i&&
      <p>{data.description}</p>}
      </div>))}
  </div>
